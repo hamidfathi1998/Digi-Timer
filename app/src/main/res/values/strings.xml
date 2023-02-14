@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Digi Timer</string>
+    <string name="_00_00_00">00 : 00.00</string>
+    <string name="timer_up">Timer Up</string>
+    <string name="start">Start</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="stop">Stop</string>
+    <string name="timer_up_with_limit">Timer Up With Limit</string>
+    <string name="timer_down">Timer Down</string>
+    <string name="_00_08_00">00 : 12.00</string>
+</resources>
