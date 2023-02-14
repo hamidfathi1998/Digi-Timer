@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'org.jetbrains.kotlin.jvm'
+    id 'maven-publish'
 }
 
 java {
@@ -15,4 +16,17 @@ dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
 
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.kotlin
+                groupId = 'com.github.hamidfathi1998'
+                artifactId = 'Digi-Timer'
+                version = '0.5.0'
+            }
+        }
+    }
 }
