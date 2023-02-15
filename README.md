@@ -4,7 +4,7 @@
 [![](https://jitpack.io/v/hamidfathi1998/Digi-Timer.svg)](https://jitpack.io/#hamidfathi1998/Digi-Timer)
 
 <p align="left">
- <a><img width="30%" height="360px"  src="screenshots/main.png"></a>
+ <a><img width="25%" height="420px"  src="screenshots/main.png"></a>
 </p>
 
 
