@@ -1,6 +1,7 @@
 # Digi Timer- An Android Timer Logic Library
 [![platform](https://img.shields.io/badge/platform-Android-yellow.svg)](https://www.android.com)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=plastic)](https://android-arsenal.com/api?level=18)
+[![](https://jitpack.io/v/hamidfathi1998/Digi-Timer.svg)](https://jitpack.io/#hamidfathi1998/Digi-Timer)
 
 <p align="center">
  <center><a><img width="100%%"  src="screenshots/main.png"></a></center>
