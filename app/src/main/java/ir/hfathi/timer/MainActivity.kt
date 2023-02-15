@@ -1,6 +1,7 @@
 package ir.hfathi.timer
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ir.hfathi.digitimer.TimerFactory
 import ir.hfathi.digitimer.enums.TimerMode
@@ -28,10 +29,13 @@ class MainActivity : AppCompatActivity() {
         val mTimer = TimerFactory()
             .getInstance(TimerMode.TIMER_UP)
             .setDateFormatPattern(TIMER_DATE_FORMAT_VALUE)
+            .setTapStopFinishInvoke(tapStopFinishInvoke = true)
             .timerTick { timerValue ->
                 runOnUiThread {
                     binding.txtTimerUpValue.text = timerValue
                 }
+            }.finishTimer {
+                Toast.makeText(this, getString(R.string.finish_timer_up), Toast.LENGTH_SHORT).show()
             }
 
         binding.btnTimerUpStart.setOnClickListener {
@@ -49,6 +53,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnTimerUpResume.setOnClickListener {
             mTimer.resume()
         }
+
+        mTimer.getTimerNowValue()
+        mTimer.destroyTimer()
     }
 
     private fun timerDownInit(){
@@ -60,6 +67,8 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     binding.txtTimerDownValue.text = timerValue
                 }
+            }.finishTimer {
+                Toast.makeText(this, getString(R.string.finish_timer_down), Toast.LENGTH_SHORT).show()
             }
 
         binding.btnTimerDownStart.setOnClickListener {
@@ -88,6 +97,8 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     binding.txtTimerUpWithLimitValue.text = timerValue
                 }
+            }.finishTimer {
+                Toast.makeText(this, getString(R.string.finish_timer_up_with_limit), Toast.LENGTH_SHORT).show()
             }
 
         binding.btnTimerUpWithLimitStart.setOnClickListener {

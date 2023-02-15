@@ -18,11 +18,15 @@ class TimerUpWithLimit: TimerMode() {
             override fun run() {
                 if (running) {
                     val inTime = getTime() - firstTime
+                    mNowTimerValue = convertMilToTimerFormat(dateTimeFormat =mDateFormatPattern,millisecond =inTime)
                     if (inTime >= mLimitValue) {
                         timer.cancel()
-                        mCallback?.invoke(getZeroWithTimerFormat(mDateFormatPattern))
+                        mNowTimerValue = convertMilToTimerFormat(dateTimeFormat = mDateFormatPattern, millisecond = mLimitValue)
+                        mCallback?.invoke(mNowTimerValue)
+                        mFinishTimerTick?.invoke()
+                    }else {
+                        mCallback?.invoke(mNowTimerValue)
                     }
-                    mCallback?.invoke(convertMilToTimerFormat(mDateFormatPattern,inTime))
                 }
             }
         }, TIMER_CYCLE_DELAY_VALUE, TIMER_CYCLE_PERIOD_VALUE)

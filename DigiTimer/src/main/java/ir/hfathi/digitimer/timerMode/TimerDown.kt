@@ -20,16 +20,17 @@ class TimerDown: TimerMode() {
                 if (running) {
                     val inTime = getTime() - firstTime
                     finalTimeMill = mLimitValue  - inTime
+                    mNowTimerValue = convertMilToTimerFormat(
+                        mDateFormatPattern,
+                        finalTimeMill
+                    )
                     if (finalTimeMill <= 0) {
                         timer.cancel()
-                        mCallback?.invoke(getZeroWithTimerFormat(mDateFormatPattern))
+                        mNowTimerValue = getZeroWithTimerFormat(mDateFormatPattern)
+                        mCallback?.invoke(mNowTimerValue)
+                        mFinishTimerTick?.invoke()
                     }else {
-                        mCallback?.invoke(
-                            convertMilToTimerFormat(
-                                mDateFormatPattern,
-                                finalTimeMill
-                            )
-                        )
+                        mCallback?.invoke(mNowTimerValue)
                     }
                 }
             }

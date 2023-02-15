@@ -3,8 +3,8 @@
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=plastic)](https://android-arsenal.com/api?level=18)
 [![](https://jitpack.io/v/hamidfathi1998/Digi-Timer.svg)](https://jitpack.io/#hamidfathi1998/Digi-Timer)
 
-<p align="center">
- <center><a><img width="100%%"  src="screenshots/main.png"></a></center>
+<p align="left">
+ <a><img width="30%" height="180px"  src="screenshots/main.png"></a>
 </p>
 
 
@@ -74,8 +74,28 @@ We have three mode of timer in this library
 
 ```
 
-### Note : To avoid MemoryLeaks always stop the timer in onDestroy().
-
+Another method :
+```kotlin
+    val mTimer = TimerFactory()
+    .getInstance(TimerMode.TIMER_DOWN) // or Timer Down, Timer Up With Limit
+    .setLimitToTimer(8_000) usage in Timer Down and Timer Up With Limit for set limit 
+    .setDateFormatPattern(TIMER_DATE_FORMAT_VALUE)
+    if you want when tap on stop method invoke finishTimer method pass treu ( default value is false)
+    .setTapStopFinishInvoke(true)
+    .timerTick { timerValue ->
+        runOnUiThread {
+            binding.txtTimerUpValue.text = timerValue
+        }
+    }
+    
+    // get timer value if you want to use timer value another place
+    mTimer.getTimerNowValue()
+    
+    // To avoid MemoryLeaks always stop the timer in onDestroy().
+    mTimer.destroyTimer()
+    
+    
+```
 
 
 

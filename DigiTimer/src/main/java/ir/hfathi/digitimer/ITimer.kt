@@ -2,10 +2,6 @@ package ir.hfathi.digitimer
 
 interface ITimer {
 
-//    val limitValue: Long?
-//    val dateFormatPattern : String
-//        get() = DEFAULT_DATE_FORMAT_PATTERN
-
     fun initTimer()
 
     fun start() : ITimer
@@ -18,7 +14,15 @@ interface ITimer {
 
     fun timerTick(callback :(String) -> Unit) : ITimer
 
+    fun finishTimer(callback :() -> Unit) : ITimer
+
+    fun getTimerNowValue() : String
+
+    fun destroyTimer()
+
     fun setLimitToTimer(limitValue:Long) : ITimer
 
     fun setDateFormatPattern(dateFormatPattern:String) : ITimer
+
+    fun setTapStopFinishInvoke(tapStopFinishInvoke:Boolean):ITimer
 }

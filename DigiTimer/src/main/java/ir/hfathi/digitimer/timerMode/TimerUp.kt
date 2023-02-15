@@ -17,7 +17,8 @@ class TimerUp : TimerMode() {
             override fun run() {
                 if (running) {
                     val inTime = getTime() - firstTime
-                    mCallback?.invoke(convertMilToTimerFormat(mDateFormatPattern,inTime))
+                    mNowTimerValue = convertMilToTimerFormat(mDateFormatPattern,inTime)
+                    mCallback?.invoke(mNowTimerValue)
                 }
             }
         }, TIMER_CYCLE_DELAY_VALUE, TIMER_CYCLE_PERIOD_VALUE)

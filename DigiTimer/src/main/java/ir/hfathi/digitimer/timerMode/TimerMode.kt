@@ -2,20 +2,26 @@ package ir.hfathi.digitimer.timerMode
 
 import ir.hfathi.digitimer.Constants
 import ir.hfathi.digitimer.ITimer
+import ir.hfathi.digitimer.convertMilToTimerFormat
 import ir.hfathi.digitimer.getTime
+import sun.security.smartcardio.SunPCSC.Factory
 import java.util.*
 
 open class TimerMode : ITimer {
 
     protected var timer = Timer()
     protected var firstTime = 0L
-    private var breakTime = 0L
     protected var mLimitValue: Long = 0
-    protected var isPauseTimer = false
     protected var finishTimerLimit = false
     protected var running: Boolean = false
+    protected var mNowTimerValue = String()
     protected var mCallback: ((String) -> Unit)? = null
+    protected var mFinishTimerTick: (() -> Unit)? = null
     protected var mDateFormatPattern: String = Constants.DEFAULT_DATE_FORMAT_PATTERN
+
+    private var breakTime = 0L
+    private var isPauseTimer = false
+    private var mTapStopFinishInvoke = false
 
     override fun initTimer() = Unit
 
@@ -28,6 +34,9 @@ open class TimerMode : ITimer {
     }
 
     override fun stop() : ITimer {
+        if (mTapStopFinishInvoke){
+            mFinishTimerTick?.invoke()
+        }
         isPauseTimer = false
         running = false
         timer.cancel()
@@ -57,12 +66,29 @@ open class TimerMode : ITimer {
         return this
     }
 
+    override fun finishTimer(callback: () -> Unit): ITimer {
+        mFinishTimerTick = callback
+        return this
+    }
+
+    override fun getTimerNowValue(): String = mNowTimerValue
+
+    override fun destroyTimer() {
+        timer.cancel()
+        timer.purge()
+    }
+
     override fun setLimitToTimer(limitValue: Long): ITimer {
         mLimitValue = limitValue
         return this
     }
     override fun setDateFormatPattern(dateFormatPattern: String): ITimer {
         mDateFormatPattern = dateFormatPattern
+        return this
+    }
+
+    override fun setTapStopFinishInvoke(tapStopFinishInvoke: Boolean): ITimer {
+        mTapStopFinishInvoke = tapStopFinishInvoke
         return this
     }
 }
