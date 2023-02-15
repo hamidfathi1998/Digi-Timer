@@ -4,7 +4,7 @@
 [![](https://jitpack.io/v/hamidfathi1998/Digi-Timer.svg)](https://jitpack.io/#hamidfathi1998/Digi-Timer)
 
 <p align="left">
- <a><img width="30%" height="180px"  src="screenshots/main.png"></a>
+ <a><img width="30%" height="360px"  src="screenshots/main.png"></a>
 </p>
 
 
@@ -14,8 +14,8 @@ Add this in your root `build.gradle` file (**not** your module `build.gradle` fi
 ```gradle
 allprojects {
 	repositories {
-		...
-		maven { url "https://jitpack.io" }
+	  ...
+	  maven { url "https://jitpack.io" }
 	}
 }
 ```
@@ -26,8 +26,8 @@ Add this to your module's `build.gradle` file :
 
 ```gradle
 dependencies {
-	...
-	implementation 'com.github.hamidfathi1998:Digi-Timer:$VERSION'
+  ...
+  implementation 'com.github.hamidfathi1998:Digi-Timer:$VERSION'
 }
 ```
 
