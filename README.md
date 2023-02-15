@@ -27,6 +27,7 @@ Add this to your module's `build.gradle` file :
 ```gradle
 dependencies {
 	...
+	implementation 'com.github.hamidfathi1998:Digi-Timer:$VERSION'
 }
 ```
 
