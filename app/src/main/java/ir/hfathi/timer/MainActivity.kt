@@ -9,8 +9,9 @@ import ir.hfathi.timer.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
-    companion object{
+    private lateinit var binding: ActivityMainBinding
+
+    companion object {
         const val TIMER_DOWN_LIMIT_VALUE = 12_000L // 12 sec
         const val TIMER_UP_WITH_LIMIT_VALUE = 70_100L // 1 min, 10sec, 10 mill
         const val TIMER_DATE_FORMAT_VALUE = "mm : ss.SS" // 12 : 25.79
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         timerUpWithLimitInit()
     }
 
-    private fun timerUpInit(){
+    private fun timerUpInit() {
         val mTimer = TimerFactory()
             .getInstance(TimerMode.TIMER_UP)
             .setDateFormatPattern(TIMER_DATE_FORMAT_VALUE)
@@ -35,7 +36,10 @@ class MainActivity : AppCompatActivity() {
                     binding.txtTimerUpValue.text = timerValue
                 }
             }.finishTimer {
-                Toast.makeText(this, getString(R.string.finish_timer_up), Toast.LENGTH_SHORT).show()
+                runOnUiThread {
+                    Toast.makeText(this, getString(R.string.finish_timer_up), Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
 
         binding.btnTimerUpStart.setOnClickListener {
@@ -54,11 +58,9 @@ class MainActivity : AppCompatActivity() {
             mTimer.resume()
         }
 
-        mTimer.getTimerNowValue()
-        mTimer.destroyTimer()
     }
 
-    private fun timerDownInit(){
+    private fun timerDownInit() {
         val mTimer = TimerFactory()
             .getInstance(TimerMode.TIMER_DOWN)
             .setLimitToTimer(TIMER_DOWN_LIMIT_VALUE)
@@ -68,7 +70,10 @@ class MainActivity : AppCompatActivity() {
                     binding.txtTimerDownValue.text = timerValue
                 }
             }.finishTimer {
-                Toast.makeText(this, getString(R.string.finish_timer_down), Toast.LENGTH_SHORT).show()
+                runOnUiThread {
+                    Toast.makeText(this, getString(R.string.finish_timer_down), Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
 
         binding.btnTimerDownStart.setOnClickListener {
@@ -88,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun timerUpWithLimitInit(){
+    private fun timerUpWithLimitInit() {
         val mTimer = TimerFactory()
             .getInstance(TimerMode.TIMER_UP_WITH_LIMIT)
             .setLimitToTimer(TIMER_UP_WITH_LIMIT_VALUE)
@@ -98,7 +103,13 @@ class MainActivity : AppCompatActivity() {
                     binding.txtTimerUpWithLimitValue.text = timerValue
                 }
             }.finishTimer {
-                Toast.makeText(this, getString(R.string.finish_timer_up_with_limit), Toast.LENGTH_SHORT).show()
+                runOnUiThread {
+                    Toast.makeText(
+                        this,
+                        getString(R.string.finish_timer_up_with_limit),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
 
         binding.btnTimerUpWithLimitStart.setOnClickListener {

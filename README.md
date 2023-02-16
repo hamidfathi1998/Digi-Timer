@@ -54,6 +54,14 @@ We have three mode of timer in this library
                 runOnUiThread {
                     binding.txtTimerUpValue.text = timerValue
                 }
+            }.finishTimer {
+                runOnUiThread {
+                    Toast.makeText(
+                        this,
+                        getString(R.string.finish_timer_up_with_limit),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         
         binding.btnTimerUpStart.setOnClickListener {
@@ -85,6 +93,14 @@ Another method :
     .timerTick { timerValue ->
         runOnUiThread {
             binding.txtTimerUpValue.text = timerValue
+        }
+    }.finishTimer {
+        runOnUiThread {
+            Toast.makeText(
+                this,
+                getString(R.string.finish_timer_up_with_limit),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
     
