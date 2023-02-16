@@ -72,6 +72,7 @@ open class TimerMode : ITimer {
 
     override fun destroyTimer() {
         try {
+            finishTimerLimit = true
             timer.cancel()
             timer.purge()
         } catch (ex: java.lang.Exception) {
@@ -96,6 +97,7 @@ open class TimerMode : ITimer {
 
     protected fun cancelTimer(){
         try {
+            finishTimerLimit = true
             timer.cancel()
         } catch (ex: java.lang.Exception) {
             ex.printStackTrace()
