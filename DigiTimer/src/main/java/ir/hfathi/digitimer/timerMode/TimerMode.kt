@@ -2,9 +2,7 @@ package ir.hfathi.digitimer.timerMode
 
 import ir.hfathi.digitimer.Constants
 import ir.hfathi.digitimer.ITimer
-import ir.hfathi.digitimer.convertMilToTimerFormat
 import ir.hfathi.digitimer.getTime
-import sun.security.smartcardio.SunPCSC.Factory
 import java.util.*
 
 open class TimerMode : ITimer {
