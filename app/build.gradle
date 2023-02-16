@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
 
@@ -24,7 +24,6 @@ android {
         }
     }
     defaultConfig {
-        applicationId "ir.hfathi.timer"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
