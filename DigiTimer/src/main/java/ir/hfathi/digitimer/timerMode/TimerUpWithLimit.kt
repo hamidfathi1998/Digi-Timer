@@ -20,7 +20,7 @@ class TimerUpWithLimit: TimerMode() {
                     val inTime = getTime() - firstTime
                     mNowTimerValue = convertMilToTimerFormat(dateTimeFormat =mDateFormatPattern,millisecond =inTime)
                     if (inTime >= mLimitValue) {
-                        timer.cancel()
+                        cancelTimer()
                         mNowTimerValue = convertMilToTimerFormat(dateTimeFormat = mDateFormatPattern, millisecond = mLimitValue)
                         mCallback?.invoke(mNowTimerValue)
                         mFinishTimerTick?.invoke()

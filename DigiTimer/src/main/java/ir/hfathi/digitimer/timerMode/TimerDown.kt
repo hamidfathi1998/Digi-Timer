@@ -25,7 +25,7 @@ class TimerDown: TimerMode() {
                         finalTimeMill
                     )
                     if (finalTimeMill <= 0) {
-                        timer.cancel()
+                        cancelTimer()
                         mNowTimerValue = getZeroWithTimerFormat(mDateFormatPattern)
                         mCallback?.invoke(mNowTimerValue)
                         mFinishTimerTick?.invoke()

@@ -36,12 +36,7 @@ open class TimerMode : ITimer {
             mFinishTimerTick?.invoke()
         }
         isPauseTimer = false
-        running = false
-        try {
-            timer.cancel()
-        } catch (ex: java.lang.Exception) {
-            ex.printStackTrace()
-        }
+        cancelTimer()
         finishTimerLimit = true
         return this
     }
@@ -97,5 +92,13 @@ open class TimerMode : ITimer {
     override fun setTapStopFinishInvoke(tapStopFinishInvoke: Boolean): ITimer {
         mTapStopFinishInvoke = tapStopFinishInvoke
         return this
+    }
+
+    protected fun cancelTimer(){
+        try {
+            timer.cancel()
+        } catch (ex: java.lang.Exception) {
+            ex.printStackTrace()
+        }
     }
 }
