@@ -3,9 +3,10 @@ package ir.hfathi.timer
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import ir.hfathi.digitimer.R
 import ir.hfathi.digitimer.TimerFactory
+import ir.hfathi.digitimer.databinding.ActivityMainBinding
 import ir.hfathi.digitimer.enums.TimerMode
-import ir.hfathi.timer.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
